@@ -3,16 +3,15 @@
 
 using namespace std;
 
-int dp[100002];
 
 int solution(int n) {
-    int answer = 0;
-    dp[1] = 1;
+     if (n <= 1) return n;
 
-    //다이나믹 프로그래밍
-    for (int i = 2;i <= n;i++)
-    {
-        dp[i] = (dp[i - 2] + dp[i - 1]) % 1234567;
-    }
-    return dp[n];
+ int a = 0, b = 1, c = 0;
+ for (int i = 2;i <= n;i++) {
+     c = (a + b) % 1234567;
+     a = b;
+     b = c;
+ }
+ return c;
 }
